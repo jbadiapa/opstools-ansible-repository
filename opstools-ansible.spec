@@ -1,4 +1,6 @@
-%global commit0 b734eef08163ac2263661cdaae48046b9e344972
+#%global commit0 b734eef08163ac2263661cdaae48046b9e344972
+# This commmit is the one at https://github.com/jbadiapa/opstools-ansible-1/commit/5178f7e2a72ca65973bbb92d8c12083f9142b22f
+%global commit0 512286ec113b75790e31854a59c22205a03b069d 
 %global shortcommit0 %(c=%{commit0}; echo ${c:0:7})
 %global checkout 20161110git%{shortcommit0}
 
@@ -9,7 +11,7 @@ Summary:        Ansible playbooks for installing the server side of OpenStack op
 
 License:        ASL 2.0
 URL:            https://github.com/centos-opstools
-Source0:        https://github.com/centos-opstools/%{name}/archive/%{commit0}.tar.gz#/%{name}-%{shortcommit0}.tar.gz
+Source0:       https://github.com/centos-opstools/%{name}/archive/%{commit0}.tar.gz#/%{name}-%{shortcommit0}.tar.gz
 
 Group:          automation/opstools 
        
@@ -34,8 +36,10 @@ tools/validate-playbooks
 %build 
 make
 
-%install
+%clean
 rm -rf %{buildroot}
+
+%install
 install -d %{buildroot}%{_datadir}/%{name}/group_vars
 install -d %{buildroot}%{_datadir}/%{name}/inventory
 install -d %{buildroot}%{_datadir}/%{name}/roles
@@ -44,12 +48,15 @@ install -p -m 644 playbook.yml %{buildroot}%{_datadir}/%{name}/playbook.yml
 cp -pr group_vars/* %{buildroot}%{_datadir}/%{name}/group_vars
 cp -pr inventory/* %{buildroot}%{_datadir}/%{name}/inventory
 cp -pr roles/* %{buildroot}%{_datadir}/%{name}/roles
+mkdir -p %{buildroot}%{_sbindir}
+install -p -m 755 scripts/opstools-server-installation.sh %{buildroot}%{_sbindir}/opstools-server-installation.sh
 
 %files
 %license LICENSE.txt
 %doc README.md
 %doc README.html
 %{_datadir}/%{name}/
+%{_sbindir}/opstools-server-installation.sh
 
 
 

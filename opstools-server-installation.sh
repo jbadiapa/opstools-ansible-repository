@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 #Help info
 if [ "-h" == $1 ]; then
   echo 
@@ -22,7 +21,7 @@ if [ "-h" == $1 ]; then
   echo "* To install everything on 192.168.122.125:"
   echo "   $0 192.168.122.125 && $0"
   echo 
-  exit 0 
+  exit 0
 fi
 
 #Creates the ~/.opstools.hosts if it does not exits
@@ -36,7 +35,7 @@ if [ ! -f  ~/.opstools.hosts ]; then
   if [ "x$PM_HOST" == "x" ]; then
    PM_HOST=$HOST
   fi
-  
+
   if [ "x$AM_HOST" == "x" ]; then
    AM_HOST=$HOST
   fi
@@ -67,9 +66,10 @@ $PM_HOST
 $CONNECTION
 EOF
 
+echo "The file ~/.opstools.hosts was created"
+
 else
   #Executes the playbook to install the opstools
   ansible-playbook -i /usr/share/opstools-ansible/inventory -i ~/.opstools.hosts /usr/share/opstools-ansible/playbook.yml
 fi
-
 
