@@ -11,10 +11,9 @@ Summary:        Ansible playbooks for installing the server side of OpenStack op
 
 License:        ASL 2.0
 URL:            https://github.com/centos-opstools
-Source0:       https://github.com/centos-opstools/%{name}/archive/%{commit0}.tar.gz#/%{name}-%{shortcommit0}.tar.gz
+Source0:        https://github.com/centos-opstools/%{name}/archive/%{commit0}.tar.gz#/%{name}-%{shortcommit0}.tar.gz
 
-Group:          automation/opstools 
-       
+Group:          Applications/System
 BuildArch:      noarch
 
 BuildRequires:  pandoc
@@ -52,6 +51,7 @@ mkdir -p %{buildroot}%{_sbindir}
 install -p -m 755 scripts/opstools-server-installation.sh %{buildroot}%{_sbindir}/opstools-server-installation.sh
 
 %files
+%defattr(-,root,root)
 %license LICENSE.txt
 %doc README.md
 %doc README.html
