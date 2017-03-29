@@ -21,7 +21,7 @@ BuildRequires:  python-tox
 BuildRequires:  ansible-lint
 BuildRequires:  yamllint
  
-Requires:       ansible > 2 
+Requires:       ansible > 2.2 
 
 %description
 Ansible playbooks for installing the server side of OpenStack operational tools
@@ -44,11 +44,12 @@ install -d %{buildroot}%{_datadir}/%{name}/inventory
 install -d %{buildroot}%{_datadir}/%{name}/roles
 install -p -m 644 ansible.cfg %{buildroot}%{_datadir}/%{name}/ansible.cfg
 install -p -m 644 playbook.yml %{buildroot}%{_datadir}/%{name}/playbook.yml
+install -p -m 644 playbook.yml %{buildroot}%{_datadir}/%{name}/playbook-post-install.yml
 cp -pr group_vars/* %{buildroot}%{_datadir}/%{name}/group_vars
 cp -pr inventory/* %{buildroot}%{_datadir}/%{name}/inventory
 cp -pr roles/* %{buildroot}%{_datadir}/%{name}/roles
 mkdir -p %{buildroot}%{_sbindir}
-install -p -m 755 scripts/opstools-server-installation.sh %{buildroot}%{_sbindir}/opstools-server-installation.sh
+install -p -m 755 opstools-server-installation.py %{buildroot}%{_sbindir}/opstools-server-installation.py
 
 %files
 %defattr(-,root,root)
@@ -56,7 +57,7 @@ install -p -m 755 scripts/opstools-server-installation.sh %{buildroot}%{_sbindir
 %doc README.md
 %doc README.html
 %{_datadir}/%{name}/
-%{_sbindir}/opstools-server-installation.sh
+%{_sbindir}/opstools-server-installation.py
 
 
 
