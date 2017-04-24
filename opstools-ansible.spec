@@ -42,7 +42,7 @@ install -d %{buildroot}%{_datadir}/%{name}/inventory
 install -d %{buildroot}%{_datadir}/%{name}/roles
 install -p -m 644 ansible.cfg %{buildroot}%{_datadir}/%{name}/ansible.cfg
 install -p -m 644 playbook.yml %{buildroot}%{_datadir}/%{name}/playbook.yml
-install -p -m 644 playbook.yml %{buildroot}%{_datadir}/%{name}/playbook-post-install.yml
+install -p -m 644 playbook-post-install.yml %{buildroot}%{_datadir}/%{name}/playbook-post-install.yml
 cp -pr group_vars/* %{buildroot}%{_datadir}/%{name}/group_vars
 cp -pr inventory/* %{buildroot}%{_datadir}/%{name}/inventory
 cp -pr roles/* %{buildroot}%{_datadir}/%{name}/roles
