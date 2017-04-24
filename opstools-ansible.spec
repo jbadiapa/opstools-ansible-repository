@@ -1,8 +1,6 @@
-#%global commit0 b734eef08163ac2263661cdaae48046b9e344972
-# This commmit is the one at https://github.com/jbadiapa/opstools-ansible-1/commit/5178f7e2a72ca65973bbb92d8c12083f9142b22f
 %global commit0 d736decd3cbc5765b11401736773b42f06c43c09 
 %global shortcommit0 %(c=%{commit0}; echo ${c:0:7})
-%global checkout 20161110git%{shortcommit0}
+%global checkout 20170424git%{shortcommit0}
 
 Name:           opstools-ansible
 Version:        0.0.2
@@ -62,7 +60,7 @@ install -p -m 755 opstools-server-installation.py %{buildroot}%{_sbindir}/opstoo
 
 
 %changelog
-* Thu Nov 10 2016 Juan Badia Payno <jbadiapa@redhat.com> - 0.0.2-0.20161110
+* Mon Apr 24 2017 Juan Badia Payno <jbadiapa@redhat.com> - 0.0.2-0.20170424
 - Documentation generated automaticaly 
 - Some playbooks testing
 
